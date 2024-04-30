@@ -5,7 +5,7 @@ class CustomSubtitle extends StatelessWidget {
     Key? key,
     required this.title,
     this.size = 0,
-    this.color = Colors.black,
+    this.color,
     this.fontWeight = 0,
     this.textAlign = TextAlign.start,
     this.onPressed,
@@ -14,7 +14,7 @@ class CustomSubtitle extends StatelessWidget {
 
   final String title;
   final double size;
-  final Color color;
+  final Color? color;
   final int fontWeight;
   final TextAlign textAlign;
   final VoidCallback? onPressed;

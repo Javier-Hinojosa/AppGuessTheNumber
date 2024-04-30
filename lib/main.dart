@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:guess_the_number/app/pages/home/home.binding.dart';
-import 'package:guess_the_number/app/pages/home/home.page.dart';
 import 'package:guess_the_number/core/routes/Pages.dart';
 import 'package:guess_the_number/core/routes/routes.dart';
 import 'package:guess_the_number/core/theme/app_theme.dart';
@@ -21,7 +20,6 @@ class MyApp extends StatelessWidget {
       defaultTransition: Transition.cupertino,
       initialBinding: HomeBinding(),
       getPages: Pages.pages,
-      home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:guess_the_number/core/values/globals.dart';
 import 'dart:math';
 
+import 'package:guess_the_number/models/level.model.dart';
+
 class HomeController extends GetxController{
-  final textEditingController = TextEditingController();
+  final textEditingController = TextEditingController(text: "").obs;
   final RxInt attempts= 0.obs;
   final smallerThan = <int>[].obs;
   final higherThan = <int>[].obs;
@@ -20,7 +22,7 @@ class HomeController extends GetxController{
    answer(_generateNumber());
   }
 
-   get  currentLevel => levelDifficulty.firstWhere((element) =>element.id==levelId());
+  LevelModel get  currentLevel => levelDifficulty.firstWhere((element) =>element.id==levelId());
 
 
   _generateNumber(){
@@ -28,5 +30,13 @@ class HomeController extends GetxController{
     int randomNumber = random.nextInt(currentLevel.maxAttemps) + 1;
     return randomNumber;
   }
+
+  onDifficultyChange(double id) {
+    levelId(id.toInt());
+  }
+
+  OnCompleteTextEditing() {}
+
+  onTrailing() {}
 
 }

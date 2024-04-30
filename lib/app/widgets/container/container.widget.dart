@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:guess_the_number/app/utils/decoration.utils.dart';
 import 'package:guess_the_number/app/widgets/text/title.widget.dart';
 
 class CustomContainer extends StatelessWidget {
@@ -10,7 +12,7 @@ class CustomContainer extends StatelessWidget {
   const CustomContainer({
     super.key,
     required this.child,
-    this.labelText = "",
+    required this.labelText,
     this.icon,
     this.color = Colors.transparent,
   });
@@ -18,12 +20,8 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30),
-          ),
-        ),
+        decoration: DecorationUtils.outLineContainer(),
+        height: Get.height*.4,
         child: ListView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             physics: const NeverScrollableScrollPhysics(),
@@ -32,8 +30,6 @@ class CustomContainer extends StatelessWidget {
               CustomTitle(
                 title: labelText,
                 textAlign: TextAlign.center,
-                color: Colors.black,
-                size: 1,
               ),
               child
             ]));

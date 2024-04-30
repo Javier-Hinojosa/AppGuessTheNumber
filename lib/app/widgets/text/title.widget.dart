@@ -5,7 +5,7 @@ class CustomTitle extends StatelessWidget {
     Key? key,
     required this.title,
     this.size = 0,
-    this.color = Colors.black54,
+    this.color,
     this.fontWeightDelta = 1,
     this.textAlign = TextAlign.start,
     this.maxLines=3
@@ -13,7 +13,7 @@ class CustomTitle extends StatelessWidget {
 
   final String title;
   final double size;
-  final Color color;
+  final Color? color;
   final int fontWeightDelta;
   final TextAlign textAlign;
   final int maxLines;
@@ -23,8 +23,7 @@ class CustomTitle extends StatelessWidget {
     return Text(
       title,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.titleSmall!.apply(
-          fontSizeDelta: size, color: color, fontWeightDelta: fontWeightDelta),
+      style: Theme.of(context).textTheme.titleSmall!.apply(fontSizeDelta: size, color: color, fontWeightDelta: fontWeightDelta),
       overflow: TextOverflow.ellipsis,
       maxLines: maxLines,
       softWrap: false,
