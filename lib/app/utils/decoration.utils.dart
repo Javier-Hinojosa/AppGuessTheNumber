@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class DecorationUtils {
   static InputDecoration outLine(
@@ -10,11 +9,14 @@ class DecorationUtils {
         GestureTapCallback? onSuffixIconTap,
         IconData? prefixIcon,
         GestureTapCallback? onPrefixIconTap,
+        String? errorText, String? hintText,
       }) {
 
     return InputDecoration(
       labelText: labelText,
       focusColor: Colors.blueAccent,
+      errorText: errorText,
+      hintText: hintText,
       disabledBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: Colors.grey[300]!,

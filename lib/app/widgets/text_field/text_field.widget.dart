@@ -7,21 +7,25 @@ class CustomTextField extends StatelessWidget {
   final int? maxLines;
   final TextInputType? textInputType;
   final Widget? trailing;
+  final String? errorText;
   final int? maxCharts;
   final Color? backgroundColor;
   final Color? labelTextColor;
   final Color? borderSideColor;
+  final String? hintText;
   final double? borderRadius;
   final GestureTapCallback? onComplete;
 
   const CustomTextField(this.labelText, this.editingController,
-      {super.key,
-        this.maxLines,
-        this.textInputType,
-        this.trailing,
+  {super.key,
+  this.maxLines,
+  this.textInputType,
+  this.trailing,
+    this.errorText,
         this.maxCharts,
         this.labelTextColor,
         this.backgroundColor,
+    this.hintText,
         this.borderSideColor,
         this.borderRadius,
         this.onComplete});
@@ -37,7 +41,7 @@ class CustomTextField extends StatelessWidget {
       buildCounter: (context,{required currentLength, required isFocused, maxLength}) =>null, //delete text Counter
       controller: editingController,
       keyboardType: textInputType,
-      decoration: DecorationUtils.outLine(labelText: labelText),
+      decoration: DecorationUtils.outLine(labelText: labelText,errorText:errorText, hintText:hintText ),
       style: Theme.of(context).textTheme.bodyMedium,
     );
   }

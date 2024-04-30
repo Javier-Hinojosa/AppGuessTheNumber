@@ -7,7 +7,7 @@ final ThemeData appTheme = ThemeData(
 
 
   textTheme: TextTheme(
-      bodyMedium: TextStyle(color: Colors.grey.shade800,fontWeight: FontWeight.w200),
+      bodyMedium: TextStyle(color: Colors.grey.shade200,fontWeight: FontWeight.w300),
   bodySmall: TextStyle(color: Colors.grey.shade200,fontSize: 16),
       titleSmall: TextStyle(color: Colors.grey.shade200,fontSize: 18,fontWeight: FontWeight.w300)
 

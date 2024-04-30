@@ -1,7 +1,5 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:guess_the_number/app/pages/home/home.controller.dart';
 import 'package:guess_the_number/app/widgets/container/container.widget.dart';
@@ -22,11 +20,13 @@ class HomePage extends GetView<HomeController> {
             IconButton(onPressed: ()=>controller.onTrailing(), icon: const Icon(Icons.menu))
           ],
         ),
-        body: Obx(()=> Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        body: Obx(()=> ListView(
+          shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             children: [
-          _header(),
-           _body(context),
+              _header(),
+              _body(context),
           ]),
         ),
 
@@ -44,9 +44,11 @@ class HomePage extends GetView<HomeController> {
           height: Get.height*.1,
           child:
       CustomTextField("Numbers",controller.textEditingController(),
-        maxCharts: 1000,
+        hintText: "####",
+        errorText: controller.errorText().isEmpty?null:controller.errorText(),
+        maxCharts: 4,
         maxLines: 1,
-        onComplete:()=>controller.OnCompleteTextEditing(),
+        onComplete:()=> controller.onCompleteTextEditing(),
       textInputType: const TextInputType.numberWithOptions(decimal: false,signed: false),
       )),
       Flexible(
@@ -69,29 +71,30 @@ Widget _body( BuildContext context) {
            Expanded(
              child: CustomContainer(
                  labelText: "Mayor que",
-                 child: ListView(shrinkWrap: true,physics: const BouncingScrollPhysics(),
-                   children: controller.higherThan.map((element) =>
-                       CustomTitle(title: element.toString())
+                 child: ListView(shrinkWrap: true,physics: const  RangeMaintainingScrollPhysics(),
+                   children: controller.smallerThan.map((element) =>
+                       CustomTitle(title: element.toString(),textAlign: TextAlign.center)
                    ).toList(),
                  )).paddingAll(10)
            ),
            Expanded(
              child: CustomContainer(
                  labelText: "Menor que",
-                 child: ListView(shrinkWrap: true,physics: const BouncingScrollPhysics(),
+                 child: ListView(shrinkWrap: true,physics: const RangeMaintainingScrollPhysics(),
                    children: controller.higherThan.map((element) =>
-                       CustomTitle(title: element.toString())
+                       CustomTitle(title: element.toString(), textAlign: TextAlign.center)
                    ).toList(),
                  )).paddingAll(10)
            ),
            Expanded(
              child: CustomContainer(
                  labelText: "Historial",
-                 child: ListView(shrinkWrap: true,physics: const BouncingScrollPhysics(),
-                   children: controller.history.entries.map((entry) =>
+                 child: ListView(shrinkWrap: true,physics: const RangeMaintainingScrollPhysics(),
+                   children: controller.history.map((entry) =>
                        CustomTitle(
                          title: entry.key.toString(),
-                         color: entry.value ? Colors.greenAccent : Colors.redAccent,
+                         textAlign: TextAlign.center,
+                         color: entry.value ? Colors.greenAccent : Colors.redAccent
                        )).toList(),
                  )).paddingAll(10)
            )

@@ -24,7 +24,6 @@ class CustomContainer extends StatelessWidget {
         height: Get.height*.4,
         child: ListView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: [
               CustomTitle(
