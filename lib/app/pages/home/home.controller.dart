@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:guess_the_number/core/common/extensors.dart';
@@ -62,8 +64,6 @@ class HomeController extends GetxController {
     textEditingController().text = "";
   }
 
-  onTrailing() {}
-
   bool _validateAnswer(int responseValue) {
     var answerValue = answer();
     if (responseValue == answerValue) {
@@ -85,6 +85,10 @@ class HomeController extends GetxController {
     history.addValue(response,value);
     answer(_generateNumber());
     attempts(currentLevel.attempts);
+  }
+
+  exitApp() {
+      exit(0);
   }
 
 }

@@ -23,7 +23,6 @@ class CustomContainer extends StatelessWidget {
         decoration: DecorationUtils.outLineContainer(),
         height: Get.height*.4,
         child: ListView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             shrinkWrap: true,
             children: [
               CustomTitle(
